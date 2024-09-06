@@ -201,9 +201,10 @@ def make_match_single(
     return matches
 
 def chat_completion_openai(model, conv, temperature, max_tokens, api_dict=None):
-    if api_dict is not None:
-        api_base = api_dict["api_base"]
-        api_key = api_dict["api_key"]
+    
+    api_base = os.environ["OPENAI_API_BASE"]
+    api_key = os.environ["OPENAI_API_KEY"]
+
     output = API_ERROR_OUTPUT
     for _ in range(API_MAX_RETRY):
         try:
